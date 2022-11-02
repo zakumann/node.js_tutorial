@@ -7,7 +7,7 @@ app.use(express.json({
   limit: '50mb' // 최대 50메가
 })); // 클라이언트 요청 body를 json으로 파싱 처리
 
-// console.log(process.env)
+
 app.listen(3000, () => {
     // 3000번 포트로 웹 서버 실행
     console.log('Server started. port 3000.');
@@ -23,12 +23,14 @@ app.get('/api/customers', async (req, res) => {
 
 //고객 정보 추가 라우터
 app.post('/api/customer/insert', async (req, res) => {
+  console.log(req.body)
   const result = await mysql.query('customerInsert', req.body.param);
-  res.send(result);
+  res.send(result); // 결과를 클라이언트로 보냄
 });
 
 //고객 정보 수정 라우터
 app.put('/api/customer/update', async (req, res) => {
+  console.log(req.body)
   const result = await mysql.query('customerUpdate', req.body.param);
   res.send(result); //결과를 클라이언트로 보냄
 });
