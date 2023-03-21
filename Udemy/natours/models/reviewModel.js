@@ -1,4 +1,5 @@
 // review / rating / createdAt / ref to tour / ref to user
+const { Router } = require('express');
 const mongoose = require('mongoose');
 
 const reviewSchema = new mongoose.Schema({
@@ -51,3 +52,7 @@ reviewSchema.pre(/^find/, function(next) {
 const Review = mongoose.model('Review', reviewSchema);
 
 module.exports = Review;
+
+// POST /tour/234fad4/reviews
+// GET /tour/234fad4/reviews
+// GET /tour/234fad4/reviews/94887fda
